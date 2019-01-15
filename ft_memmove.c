@@ -6,7 +6,7 @@
 /*   By: svoort <svoort@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/01/09 11:38:36 by svoort         #+#    #+#                */
-/*   Updated: 2019/01/14 14:59:56 by svoort        ########   odam.nl         */
+/*   Updated: 2019/01/15 17:22:25 by svoort        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,22 @@
 
 void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	int		i;
+	size_t	i;
 	char	*csrc;
 	char	*cdst;
+	char	*temp;
 
 	i = 0;
 	csrc = (char*)src;
 	cdst = (char*)dst;
-	while (i < (int)len && csrc)
+	temp = (char*)malloc(sizeof(char)*len);
+	while (i < len && temp)
+	{
+		temp[i] = csrc[i];
+		i++;
+	}
+	i = 0;
+	while (i < len && csrc)
 	{
 		cdst[i] = csrc[i];
 		i++;
