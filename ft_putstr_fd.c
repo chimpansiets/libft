@@ -6,20 +6,23 @@
 /*   By: svoort <svoort@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/01/10 11:01:04 by svoort         #+#    #+#                */
-/*   Updated: 2019/01/14 14:27:59 by svoort        ########   odam.nl         */
+/*   Updated: 2019/01/18 13:46:09 by svoort        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./includes/libft.h"
+#include "libft.h"
 
 void	ft_putstr_fd(char const *s, int fd)
 {
 	int i;
 
-	i = 0;
-	while (s[i] != '\0')
+	if (s != NULL)
 	{
-		ft_putchar_fd(s[i], fd);
-		i++;
+		i = 0;
+		while (s[i] != '\0')
+		{
+			ft_putchar_fd(s[i], fd);
+			i++;
+		}
 	}
 }

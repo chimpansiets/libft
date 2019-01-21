@@ -1,28 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_putstr.c                                        :+:    :+:            */
+/*   ft_lstmap.c                                        :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: svoort <svoort@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/01/09 15:27:56 by svoort         #+#    #+#                */
-/*   Updated: 2019/01/18 13:45:50 by svoort        ########   odam.nl         */
+/*   Created: 2019/01/18 12:44:59 by svoort         #+#    #+#                */
+/*   Updated: 2019/01/18 13:36:33 by svoort        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putstr(char const *s)
+t_list	*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
 {
-	int i;
+	t_list *new;
 
-	if (s != NULL)
+	if (lst == NULL)
+		return (NULL);
+	new = ft_lstnew(lst->content, lst->content_size);
+	if (lst != NULL)
 	{
-		i = 0;
-		while (s[i] != '\0')
-		{
-			ft_putchar(s[i]);
-			i++;
-		}
+		new = f(new);
+		new->next = ft_lstmap(lst->next, f);
+		return (new);
 	}
+	else
+		return (NULL);
 }

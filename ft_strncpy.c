@@ -6,11 +6,11 @@
 /*   By: svoort <svoort@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/01/09 13:21:08 by svoort         #+#    #+#                */
-/*   Updated: 2019/01/15 15:26:49 by svoort        ########   odam.nl         */
+/*   Updated: 2019/01/18 10:24:44 by svoort        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./includes/libft.h"
+#include "libft.h"
 
 char	*ft_strncpy(char *dst, const char *src, size_t len)
 {

@@ -6,11 +6,11 @@
 /*   By: svoort <svoort@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/01/10 10:21:17 by svoort         #+#    #+#                */
-/*   Updated: 2019/01/14 15:32:04 by svoort        ########   odam.nl         */
+/*   Updated: 2019/01/18 10:24:44 by svoort        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./includes/libft.h"
+#include "libft.h"
 
 int	ft_tolower(int c)
 {

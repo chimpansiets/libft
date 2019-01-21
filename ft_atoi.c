@@ -6,38 +6,35 @@
 /*   By: svoort <svoort@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/01/09 16:22:51 by svoort         #+#    #+#                */
-/*   Updated: 2019/01/15 16:42:45 by svoort        ########   odam.nl         */
+/*   Updated: 2019/01/20 13:27:24 by svoort        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./includes/libft.h"
+#include "libft.h"
 
 int	ft_atoi(const char *str)
 {
 	int i;
-	int neg_or_pos;
 	int ret;
-	int	char_found;
+	int	min_or_pos;
 
 	i = 0;
-	neg_or_pos = 1;
 	ret = 0;
-	char_found = 0;
-	while (str[i] != '\0' && str[i] != '\e')
+	min_or_pos = 1;
+	while (str[i] <= 32 && str[i] != '\e' && str[i] != '\0')
 	{
-		if (!ft_isdigit(str[i]) && char_found == 1)
-			return (ret * neg_or_pos);
-		else if (str[i] == '-' && char_found == 0)
-		{
-			char_found = 1;
-			neg_or_pos = -1;
-		}
-		else if (ft_isdigit(str[i]))
-		{
-			char_found = 1;
-			ret = (ret * 10) + str[i] - '0';
-		}
+		if (str[i] < 0)
+			return (ret * min_or_pos);
 		i++;
 	}
-	return (ret * neg_or_pos);
+	if (str[i] == '-')
+		min_or_pos = -1;
+	if (str[i] == '-' || str[i] == '+')
+		i++;
+	while (str[i] && ft_isdigit(str[i]) && str[i] != '\e')
+	{
+		ret = (ret * 10) + str[i] - '0';
+		i++;
+	}
+	return (ret * min_or_pos);
 }

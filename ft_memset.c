@@ -6,20 +6,20 @@
 /*   By: svoort <svoort@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/01/09 10:58:47 by svoort         #+#    #+#                */
-/*   Updated: 2019/01/14 14:27:59 by svoort        ########   odam.nl         */
+/*   Updated: 2019/01/18 10:27:46 by svoort        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./includes/libft.h"
+#include "libft.h"
 
 void	*ft_memset(void *str, int c, size_t n)
 {
-	int		i;
+	size_t	i;
 	char	*ret;
 
 	i = 0;
 	ret = (char*)str;
-	while (i < (int)n)
+	while (i < n)
 	{
 		ret[i] = c;
 		i++;

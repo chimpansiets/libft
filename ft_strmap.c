@@ -6,26 +6,30 @@
 /*   By: svoort <svoort@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/01/11 11:07:19 by svoort         #+#    #+#                */
-/*   Updated: 2019/01/15 16:52:08 by svoort        ########   odam.nl         */
+/*   Updated: 2019/01/20 13:33:25 by svoort        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./includes/libft.h"
+#include "libft.h"
 
 char	*ft_strmap(char const *s, char (*f)(char))
 {
 	char	*ret;
-	int		i;
+	size_t	i;
 
-	ret = ft_memalloc(ft_strlen(s) + 1);
-	if (ret == NULL)
-		return (NULL);
-	i = 0;
-	while (i < (int)ft_strlen(s))
+	if (s != NULL && f != NULL)
 	{
-		ret[i] = f(s[i]);
-		i++;
+		ret = (char*)ft_memalloc(ft_strlen(s) + 1);
+		if (ret == NULL)
+			return (NULL);
+		i = 0;
+		while (i < ft_strlen(s))
+		{
+			ret[i] = f(s[i]);
+			i++;
+		}
+		ret[i] = '\0';
+		return (ret);
 	}
-	ret[i] = '\0';
-	return (ret);
+	return (NULL);
 }

@@ -6,18 +6,21 @@
 /*   By: svoort <svoort@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/01/10 08:31:59 by svoort         #+#    #+#                */
-/*   Updated: 2019/01/14 14:27:59 by svoort        ########   odam.nl         */
+/*   Updated: 2019/01/18 13:56:00 by svoort        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./includes/libft.h"
+#include "libft.h"
 
 char	*ft_strchr(const char *s, int c)
 {
-	char *ptr;
+	char	*ptr;
 
 	ptr = (char*)s;
-	while (*ptr != c)
+	while (*ptr != c && *ptr != '\0')
 		ptr++;
-	return (ptr);
+	if (*ptr != c)
+		return (NULL);
+	else
+		return (ptr);
 }

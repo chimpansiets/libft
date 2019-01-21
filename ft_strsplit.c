@@ -6,35 +6,52 @@
 /*   By: svoort <svoort@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/01/11 14:59:07 by svoort         #+#    #+#                */
-/*   Updated: 2019/01/14 14:44:39 by svoort        ########   odam.nl         */
+/*   Updated: 2019/01/18 13:59:32 by svoort        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./includes/libft.h"
+#include "libft.h"
 
-char	**ft_strsplit(char const *s, char c)
+static int		get_word_len(char const *str, char c)
 {
-	char	**ret;
-	int		index;
-	int		char_index;
+	int	i;
+	int	len;
 
-	ret = (char**)ft_memalloc_2d(30, 30);
-	index = 0;
-	char_index = 0;
-	while (*s == c)
-		s++;
-	while (*s != '\0')
+	i = 0;
+	len = 0;
+	while (str[i] == c)
+		i++;
+	while (str[i] != c && str[i] != '\0')
 	{
-		if (*s == c)
-		{
-			ret[index++][char_index] = '\0';
-			char_index = 0;
-		}
-		while (*s == c)
-			s++;
-		ret[index][char_index++] = *s++;
+		i++;
+		len++;
 	}
-	ret[index][char_index] = '\0';
-	return (ret);
+	return (len);
 }
 
+char			**ft_strsplit(char const *s, char c)
+{
+	int		i;
+	int		j;
+	int		k;
+	char	**str2;
+
+	if (!s || !(str2 = (char **)malloc(sizeof(*str2) *
+		(ft_countwords(s, c) + 1))))
+		return (NULL);
+	i = -1;
+	j = 0;
+	while (++i < (int)ft_countwords(s, c))
+	{
+		k = 0;
+		if (!(str2[i] = ft_strnew(get_word_len(&s[j], c) + 1)))
+			str2[i] = NULL;
+		while (s[j] == c)
+			j++;
+		while (s[j] != c && s[j])
+			str2[i][k++] = s[j++];
+		str2[i][k] = '\0';
+	}
+	str2[i] = 0;
+	return (str2);
+}

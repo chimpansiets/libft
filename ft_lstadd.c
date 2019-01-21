@@ -1,28 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_putstr.c                                        :+:    :+:            */
+/*   ft_lstadd.c                                        :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: svoort <svoort@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/01/09 15:27:56 by svoort         #+#    #+#                */
-/*   Updated: 2019/01/18 13:45:50 by svoort        ########   odam.nl         */
+/*   Created: 2019/01/18 12:26:55 by svoort         #+#    #+#                */
+/*   Updated: 2019/01/18 12:42:53 by svoort        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putstr(char const *s)
+void	ft_lstadd(t_list **alst, t_list *new)
 {
-	int i;
-
-	if (s != NULL)
+	if (new == NULL || alst == NULL)
+		new->next = NULL;
+	else
 	{
-		i = 0;
-		while (s[i] != '\0')
-		{
-			ft_putchar(s[i]);
-			i++;
-		}
+		new->next = *alst;
+		*alst = new;
 	}
 }

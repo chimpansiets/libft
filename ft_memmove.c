@@ -6,33 +6,34 @@
 /*   By: svoort <svoort@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/01/09 11:38:36 by svoort         #+#    #+#                */
-/*   Updated: 2019/01/15 17:22:25 by svoort        ########   odam.nl         */
+/*   Updated: 2019/01/18 10:24:44 by svoort        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./includes/libft.h"
+#include "libft.h"
 
-void	*ft_memmove(void *dst, const void *src, size_t len)
+void	*ft_memmove(void *dst, void *src, size_t len)
 {
-	size_t	i;
-	char	*csrc;
-	char	*cdst;
-	char	*temp;
+	unsigned char	*csrc;
+	unsigned char	*cdst;
+	size_t			i;
 
 	i = 0;
-	csrc = (char*)src;
-	cdst = (char*)dst;
-	temp = (char*)malloc(sizeof(char)*len);
-	while (i < len && temp)
-	{
-		temp[i] = csrc[i];
-		i++;
-	}
-	i = 0;
-	while (i < len && csrc)
-	{
-		cdst[i] = csrc[i];
-		i++;
-	}
-	return (cdst);
+	if (&dst[0] < &src[0])
+		while (i < len)
+		{
+			cdst = (unsigned char*)&dst[i];
+			csrc = (unsigned char*)&src[i];
+			*cdst = *csrc;
+			i++;
+		}
+	else
+		while (i < len)
+		{
+			len--;
+			cdst = (unsigned char*)&dst[len];
+			csrc = (unsigned char*)&src[len];
+			*cdst = *csrc;
+		}
+	return (dst);
 }
